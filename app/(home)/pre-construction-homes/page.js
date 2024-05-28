@@ -110,7 +110,7 @@ export default async function Home({ params }) {
 
           <div className="mt-5 pt-5">
             <h3 className="fs-2">
-              <strong>Explore more citites </strong>
+              <strong>Explore more cites </strong>
             </h3>
             <div>
               {cities &&

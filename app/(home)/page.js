@@ -55,24 +55,70 @@ async function getCitiesandProjects() {
 
 async function getCondos() {
   const res = await fetch(
-    "https://api.dolphy.ca/api/preconstructions-city/toronto/?project_type=Condo&page_size=6",
+    // "https://api.dolphy.ca/api/preconstructions-city/toronto/?project_type=Condo&page_size=20",
+    "https://api.dolphy.ca/api/preconstructions-city/toronto/?project_type=Condo&page_size=20",
     {
       next: { revalidate: 10 },
     }
   );
 
-  if (!res.ok) {
+  // console.log(data);
+  console.log(res.ok);
+
+  if (!res.ok || res.status != 200) {
     throw new Error("Failed to fetch data");
   }
   const data = await res.json();
   return data.preconstructions;
+  // console.log(data.results)
+}
+async function getTownHomes() {
+  const res = await fetch(
+    // "https://api.dolphy.ca/api/preconstructions-city/toronto/?project_type=Condo&page_size=20",
+    "https://api.dolphy.ca/api/preconstructions-city/toronto/?project_type=Townhome&page_size=20",
+    {
+      next: { revalidate: 10 },
+    }
+  );
+
+  // console.log(data);
+  console.log(res.ok);
+
+  if (!res.ok || res.status != 200) {
+    throw new Error("Failed to fetch data");
+  }
+  const data = await res.json();
+  return data.preconstructions;
+  // console.log(data.results)
+}
+
+async function getProperties(type) {
+  const res = await fetch(
+    // "https://api.dolphy.ca/api/preconstructions-city/toronto/?project_type=Condo&page_size=20",
+    `https://api.dolphy.ca/api/preconstructions-city/toronto/?project_type=${type}&page_size=20`,
+    {
+      next: { revalidate: 10 },
+    }
+  );
+
+  // console.log(data);
+  console.log(res.ok);
+
+  if (!res.ok || res.status != 200) {
+    throw new Error("Failed to fetch data");
+  }
+  const data = await res.json();
+  return data.preconstructions;
+  // console.log(data.results)
 }
 
 export default async function Home() {
   const data = await getData("calgary");
   const toronto_data = await getData("toronto");
   let cities = await getCities();
-  const condos = await getCondos();
+  const condos = await getProperties("Condo");
+  const townhomes = await getProperties("Townhome");
+  const detached = await getProperties("Detached");
   let dropdown_cities = await getCitiesandProjects();
 
   const filteredprojects = (value) => {
@@ -115,6 +161,22 @@ export default async function Home() {
           <div className="w-screen bg-[#DDEFF1]">
             <div className="py-md-5 container-fluid2">
               <CardScroll data={condos} title="Condos" />
+              {/* <PropertyCard data={condos[0]} /> */}
+            </div>
+          </div>
+          <div className="w-screen bg-[#FEF7E7]">
+            <div className="py-md-5 container-fluid2">
+              <CardScroll
+                data={townhomes}
+                title="TownHomes"
+                btnColor="#DDEFF1"
+              />
+              {/* <PropertyCard data={condos[0]} /> */}
+            </div>
+          </div>
+          <div className="w-screen bg-[#DDEFF1]">
+            <div className="py-md-5 container-fluid2">
+              <CardScroll data={detached} title="Detached" />
               {/* <PropertyCard data={condos[0]} /> */}
             </div>
           </div>

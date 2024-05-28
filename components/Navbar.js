@@ -13,14 +13,14 @@ const Navbar = ({ cities, dropdown_cities }) => {
   };
 
   return (
-    <nav className="navbar navbar-expand-sm navbar-light bg-white py-3 py-md-2 shadow-navbar mb-3 sticky-top">
-      <div className="container-fluid justify-between">
+    <nav className="navbar navbar-expand-sm navbar-light bg-white/75 py-3 py-md-2 shadow-navbar mb-3 sticky-top">
+      <div className="container-fluid justify-between mx-48 ">
         <Link href="/" className="logo">
           <img src="/logo2.svg" alt="Dolphy logo" className="img-fluid" />
         </Link>
 
         <button
-          className="navbar-toggler d-lg-none ms-auto"
+          className="navbar-toggler d-lg-none ms-auto "
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#collapsibleNavId"
@@ -37,10 +37,10 @@ const Navbar = ({ cities, dropdown_cities }) => {
           />
         </button>
         <div id="collapsibleNavId">
-          <ul className="navbar-nav ms-auto mt-2 mt-lg-0 align-items-center justify-md-between">
+          <ul className="navbar-nav ms-auto mt-2 mt-lg-0 align-items-center justify-md-between ">
             <li className="nav-item dropdown dropdown-fullwidth">
-              {/* <button
-                className="nav-link dropdown-toggle align-items-center d-flex shadow-lg fw-500 text-dark me-3 px-2"
+              <button
+                className="nav-link text-black dropdown-toggle align-items-center d-flex fw-500 text-dark me-3 px-2 hover:bg-black hover:text-primary-color"
                 data-bs-toggle="dropdown"
                 aria-haspopup="true"
                 aria-expanded="true"
@@ -51,7 +51,7 @@ const Navbar = ({ cities, dropdown_cities }) => {
                   alt="dropdown icon"
                   className="img-fluid dropdown-nav-icon ms-1"
                 />
-              </button> */}
+              </button>
               <div
                 className="dropdown-menu dropdown-menu-end border-0 show"
                 data-bs-popper="static"
@@ -112,10 +112,10 @@ const Navbar = ({ cities, dropdown_cities }) => {
                 </div>
               </div>
             </li>
-            <li className="nav-item">
+            <li className="nav-item text-black hover:bg-black hover:text-primary-color">
               <Link
                 href={"/pre-construction-homes/calgary/"}
-                className="nav-link"
+                className="nav-link text-black"
               >
                 Calgary's Top Preconstruction
               </Link>
@@ -123,18 +123,18 @@ const Navbar = ({ cities, dropdown_cities }) => {
             <li className="nav-item">
               <Link
                 href={"/pre-construction-homes/builders/"}
-                className="nav-link"
+                className="nav-link text-black"
               >
                 Builders
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" href="/blogs">
+              <Link className="nav-link text-black" href="/blogs">
                 Blogs
               </Link>
             </li>
             <li className="nav-item">
-              <Link href="#mycontact" className="nav-link">
+              <Link href="#mycontact" className="nav-link text-black">
                 Contact
               </Link>
             </li>

@@ -10,6 +10,16 @@ import Link from "next/link";
 import PreconSchema from "@/components/PreconSchema";
 import FixedContactButton from "@/components/FixedContactButton";
 import FloorPlans from "@/components/FloorPlans";
+import PropertyCard from "@/components/PropertyCard";
+import {
+  Modal,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  Button,
+  useDisclosure,
+} from "@nextui-org/react";
+import ContactFormSubmit from "@/components/ContactFormSubmit";
 
 async function getData(slug) {
   const res = await fetch(
@@ -77,8 +87,8 @@ export async function generateMetadata({ params }, parent) {
 
 export default async function Home({ params }) {
   const data = await getData(params.slug);
-  const related = await getRelatedData(params.city);
-
+  const related = await getRelatedData(params.city?.toLowerCase());
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const convDash = (add) => {
     var result = add.split(" ").join("-");
     var newresult = result.split(",").join("-");
@@ -139,7 +149,7 @@ export default async function Home({ params }) {
   ];
 
   return (
-    <>
+    <div className="mx-48">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -182,10 +192,22 @@ export default async function Home({ params }) {
                 <div className="screenshot">
                   <div className="row row-cols-1 row-cols-sm-2">
                     <div className="col-sm-12">
-                      <h1 className="main-title text-red fw-mine">
+                      <h1 className="main-title text-black mb-2">
                         {data.project_name}
                       </h1>
-                      <p className="mb-0">
+                      <div className="mb-1">
+                        <span className="me-2 mb-2 fs-mine3">
+                          <img
+                            src="/location.svg"
+                            className="w-5 inline mb-1 h-[]"
+                          ></img>
+                          {data.project_address}
+                        </span>
+                        {/* <span scope="col">
+                          {data.project_address}, {data.city.name}
+                        </span> */}
+                      </div>
+                      {/* <p className="mb-0">
                         Developed By{" "}
                         <strong>
                           <Link
@@ -195,20 +217,13 @@ export default async function Home({ params }) {
                             {data.developer.name}
                           </Link>
                         </strong>
-                      </p>
-                      <h2 className="vmain-title fs-3 fw-mine3 mt-1 mb-0">
+                      </p> */}
+                      {/* <h2 className="vmain-title fs-3 fw-mine3 mt-1 mb-0">
                         {checkPricing(data.price_starting_from, data.price_to)}
-                      </h2>
-                      <div className="mb-1">
-                        <span scope="col">Project status : {data.status}</span>
-                      </div>
-                      <div className="mb-1">
-                        <span className="me-2 fw-mine2 mb-2 fs-mine3">
-                          Project Location:
-                        </span>
-                        <span scope="col">
-                          {data.project_address}, {data.city.name}
-                        </span>
+                      </h2> */}
+                      <div className="inline-flex gap-2">
+                        <div className="badge-red">{data.status}</div>
+                        <div className="badge-red">{data.project_type}</div>
                       </div>
                     </div>
                   </div>
@@ -220,17 +235,55 @@ export default async function Home({ params }) {
                       </div>
                     </div>
                     <div className="py-5 pt-3">
-                      <h2 className="fw-bold fs-3">
-                        About {data.project_name} in {data.city.name}
-                      </h2>
+                      <h2 className="fw-bold fs-3">Description</h2>
+                      <div className="mb-1">
+                        <span className="ptype my-2">
+                          Property Type : {data.project_type}
+                        </span>
+                      </div>
+                      <Button
+                        href="#"
+                        className="flex text-bold bg-black text-white px-[22px] h-[50px] text-lg font-bold w-auto rounded-lg hover:text-white items-center my-5"
+                        onPress={onOpen}
+                      >
+                        GET FLOOR PLAN AND PRICES
+                      </Button>
+                      <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
+                        <ModalContent>
+                          {(onClose) => (
+                            <>
+                              <ModalHeader className="flex flex-col gap-1">
+                                Modal Title
+                              </ModalHeader>
+                              <ModalBody>
+                                <SideContactForm />
+                              </ModalBody>
+                            </>
+                          )}
+                        </ModalContent>
+                      </Modal>
+                      <button
+                        href="#"
+                        className="flex font-bold w-auto bg-[#ffc933] text-white px-[22px] h-[50px] text-lg text-bold rounded-lg hover:text-white items-center my-5"
+                      >
+                        GET VIP ACCESS
+                      </button>
+
                       <div className="text-start mb-1 text-inside">
                         <div
-                          className="iframe-container"
+                          className="iframe-container description-text"
                           dangerouslySetInnerHTML={{
                             __html: data.description,
                           }}
                         ></div>
                       </div>
+
+                      <button
+                        href="#"
+                        className="flex text-bold bg-black text-white px-[22px] h-[50px] text-lg font-bold w-auto rounded-lg hover:text-white items-center my-5"
+                      >
+                        REGISTER NOW
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -345,7 +398,7 @@ export default async function Home({ params }) {
           </div>
           <div className="py-5 my-5 d-none d-md-block">
             <div className="container-fluid">
-              <div className="row justify-content-center">
+              {/* <div className="row justify-content-center">
                 <img
                   src="/contact-bottom-2.png"
                   alt="dce"
@@ -354,8 +407,8 @@ export default async function Home({ params }) {
               </div>
               <h2 className="fw-mine text-center px-md-4 fs-4">
                 Contact Dolphy Team Today
-              </h2>
-              <div className="row row-cols-1 row-cols-md-3 mt-3">
+              </h2> */}
+              {/* <div className="row row-cols-1 row-cols-md-3 mt-3">
                 <div className="col-md-3"></div>
                 <div className="col-md-6">
                   <BottomContactForm
@@ -364,11 +417,11 @@ export default async function Home({ params }) {
                   ></BottomContactForm>
                 </div>
                 <div className="col-md-3"></div>
-              </div>
+              </div> */}
             </div>
           </div>
           <div className="pt-5 mt-5"></div>
-          <div className="container-fluid px-md-4 pt-md-5 mt-4">
+          {/* <div className="container-fluid px-md-4 pt-md-5 mt-4">
             <section>
               <div className="d-flex flex-column justify-content-center align-items-center pb-md-4">
                 <h3 className="main-title mb-3 mt-2 mb-md-5 text-center d-flex flex-column d-md-block">
@@ -383,12 +436,13 @@ export default async function Home({ params }) {
               <div className="my-3"></div>
             </section>
             <div className="py-4"></div>
-          </div>
+          </div> */}
           <div className="py-5 my-5"></div>
           <div>
             <div className="d-flex flex-column">
               <h2 className="main-title">
-                Similar New Construction Homes in {data.city.name} ( 2023 )
+                {/* Similar New Construction Homes in {data.city.name} ( 2023 ) */}
+                Similar Projects Nearby
               </h2>
             </div>
             <div className="py-2"></div>
@@ -396,13 +450,13 @@ export default async function Home({ params }) {
               {related &&
                 related.map((item) => (
                   <div className="col" key={item.id}>
-                    <CondoCard {...item} />
+                    <PropertyCard data={item} link="" />
                   </div>
                 ))}
             </div>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

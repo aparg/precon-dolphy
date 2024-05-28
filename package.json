@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@nextui-org/modal": "^2.0.33",
     "@tinymce/tinymce-react": "^4.3.2",
     "axios": "^1.5.0",
     "bootstrap": "^5.3.1",

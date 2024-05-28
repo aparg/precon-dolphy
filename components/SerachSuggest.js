@@ -20,7 +20,7 @@ function SearchSuggest(props) {
   };
 
   const handleOnSelect = (item) => {
-    console.log(item);
+    // console.log(item);
     route.push(`/pre-construction-homes/${item.slug}/`);
   };
 
