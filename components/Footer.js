@@ -4,7 +4,7 @@ const Footer = ({ cities }) => {
   return (
     <footer className="footer mt-5 shadow-lg">
       <div className="container-fluid footer-top">
-        <div className="row gy-4 mx-48">
+        <div className="row gy-4 justify-between mx-48">
           <div className="col-lg-5 col-md-12 footer-about">
             <Link href="/" className="footer-logo d-flex align-items-center">
               <img src="/logo2.svg" alt="Dolphy logo" className="img-fluid" />

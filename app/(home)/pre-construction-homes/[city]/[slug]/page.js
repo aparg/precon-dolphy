@@ -11,16 +11,15 @@ import PreconSchema from "@/components/PreconSchema";
 import FixedContactButton from "@/components/FixedContactButton";
 import FloorPlans from "@/components/FloorPlans";
 import PropertyCard from "@/components/PropertyCard";
-import {
-  Modal,
-  ModalContent,
-  ModalHeader,
-  ModalBody,
-  Button,
-  useDisclosure,
-} from "@nextui-org/react";
+// import {
+//   Modal,
+//   ModalContent,
+//   ModalHeader,
+//   ModalBody,
+//   Button,
+//   useDisclosure,
+// } from "@nextui-org/react";
 import ContactFormSubmit from "@/components/ContactFormSubmit";
-
 async function getData(slug) {
   const res = await fetch(
     "https://api.dolphy.ca/api/preconstructions-detail/" + slug,
@@ -88,7 +87,7 @@ export async function generateMetadata({ params }, parent) {
 export default async function Home({ params }) {
   const data = await getData(params.slug);
   const related = await getRelatedData(params.city?.toLowerCase());
-  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  // const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const convDash = (add) => {
     var result = add.split(" ").join("-");
     var newresult = result.split(",").join("-");
@@ -241,14 +240,14 @@ export default async function Home({ params }) {
                           Property Type : {data.project_type}
                         </span>
                       </div>
-                      <Button
+                      <button
                         href="#"
                         className="flex text-bold bg-black text-white px-[22px] h-[50px] text-lg font-bold w-auto rounded-lg hover:text-white items-center my-5"
-                        onPress={onOpen}
+                        // onPress={onOpen}
                       >
                         GET FLOOR PLAN AND PRICES
-                      </Button>
-                      <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
+                      </button>
+                      {/* <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
                         <ModalContent>
                           {(onClose) => (
                             <>
@@ -261,7 +260,7 @@ export default async function Home({ params }) {
                             </>
                           )}
                         </ModalContent>
-                      </Modal>
+                      </Modal> */}
                       <button
                         href="#"
                         className="flex font-bold w-auto bg-[#ffc933] text-white px-[22px] h-[50px] text-lg text-bold rounded-lg hover:text-white items-center my-5"

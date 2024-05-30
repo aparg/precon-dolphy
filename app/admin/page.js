@@ -137,8 +137,11 @@ export default function Home() {
             </div>
           </div>
           <div className="col-md-3 d-flex justify-content-end">
-            <Link href="/admin/upload/" className="btn btn-success py-3">
-              Add New Preconstruction
+            <Link
+              href="/admin/upload/"
+              className="btn bg-primary-color text-white py-3 hover:text-white font-medium"
+            >
+              + Add New Preconstruction
             </Link>
           </div>
         </div>

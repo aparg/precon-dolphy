@@ -11,7 +11,9 @@ const config = {
         "1/8": "12.5%",
       },
       colors: {
-        "primary-color": "#ffc933",
+        // "primary-color": "#ffc933",
+        "primary-color": "#E1B70B",
+        "primary-grey": "#A0A3BD",
       },
     },
   },

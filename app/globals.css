@@ -658,6 +658,11 @@ a:hover {
   margin-bottom: 5px;
 }
 
+.sidebar-nav .nav-item:hover {
+  background-color: #e1b70b;
+  border-radius: 10px;
+}
+
 .sidebar-nav .nav-heading {
   font-size: 11px;
   text-transform: uppercase;
@@ -675,7 +680,7 @@ a:hover {
   transition: 0.3;
   background: #ffffff;
   padding: 10px 15px;
-  border-radius: 4px;
+  border-radius: 10px;
 }
 
 .sidebar-nav .nav-link.active {
@@ -712,7 +717,7 @@ a:hover {
 
 .sidebar-nav .nav-link:hover {
   color: #00a1ff;
-  background: #f6f9ff;
+  background: #e1b70b;
 }
 
 .sidebar-nav .nav-link:hover i {
