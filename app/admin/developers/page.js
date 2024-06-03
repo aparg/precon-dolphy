@@ -390,10 +390,10 @@ export default function Developers() {
           </div>
           <div className="col-md-4 d-flex justify-content-end">
             <button
-              className="btn btn-success py-3"
               onClick={() => setModalDeveloper(true)}
+              className="btn bg-[#262338] text-white py-3 hover:text-white font-medium"
             >
-              Add New Developer
+              + Add New Developer
             </button>
           </div>
         </div>

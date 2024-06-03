@@ -1,11 +1,13 @@
 import Link from "next/link";
 import PageSelector from "./PageSelector";
+import { ImSpinner } from "react-icons/im";
 
 const ListingTable = ({
   preconstructions,
   handleDelete,
   setPage,
   totalPages,
+  loading,
 }) => {
   return (
     <div className="">
@@ -51,8 +53,10 @@ const ListingTable = ({
               </th>
             </tr>
           </thead>
+
           <tbody>
             {preconstructions &&
+              !loading &&
               preconstructions.map((preconstruction, index) => (
                 <tr key={index}>
                   {/* <th scope="row">{index + 1}</th> */}
@@ -95,6 +99,11 @@ const ListingTable = ({
               ))}
           </tbody>
         </table>
+        {loading && (
+          <div className="w-full flex justify-center items-center pt-4">
+            <ImSpinner />
+          </div>
+        )}
         <div className="flex justify-end my-3 mx-3">
           <PageSelector
             numberOfPages={totalPages}

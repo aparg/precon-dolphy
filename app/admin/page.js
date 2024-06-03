@@ -16,14 +16,17 @@ export default function Home() {
   const [refetch, setRefetch] = useState(true);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     axios
       .get("https://api.dolphy.ca/api/preconstructions/?page=" + page)
       .then((res) => {
         console.log(res.data.results);
         setPreConstructions(res.data.results);
         setTotalPages(Math.ceil(res.data.count / 10));
+        setLoading(false);
       })
       .catch((err) => {
         console.log(err.data);
@@ -210,14 +213,17 @@ export default function Home() {
       </div>
 
       <div className="p-4">
-        <ListingTable
-          preconstructions={preconstructions}
-          handleDelete={handleDelete}
-          filters={filters}
-          setFilters={setFilters}
-          setPage={setPage}
-          totalPages={totalPages}
-        ></ListingTable>
+        {
+          <ListingTable
+            preconstructions={preconstructions}
+            handleDelete={handleDelete}
+            filters={filters}
+            setFilters={setFilters}
+            setPage={setPage}
+            totalPages={totalPages}
+            loading={loading}
+          ></ListingTable>
+        }
       </div>
     </div>
   );

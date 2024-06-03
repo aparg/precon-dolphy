@@ -38,7 +38,7 @@ const CityTable = ({ cities, handleEdit, handleDelete }) => {
                       onClick={(e) => {
                         handleEdit(e, city.id);
                       }}
-                      className="flex"
+                      className="flex flex-col"
                     >
                       <img src="/pen.svg" className="w-5 h-5" />
                       <span className="text-primary-grey text-xs font-medium">
