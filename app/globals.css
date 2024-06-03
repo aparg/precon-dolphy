@@ -52,8 +52,8 @@ a:hover {
 # Main
 --------------------------------------------------------------*/
 #main {
-  margin-top: 60px;
-  padding: 20px 30px;
+  /* margin-top: 60px; */
+  /* padding: 20px 30px; */
   transition: all 0.3s;
 }
 
@@ -324,7 +324,7 @@ a:hover {
 }
 
 .nav-tabs-borde .nav-link.active {
-  background-color: #fff;
+  background-color: #e1b70b;
   color: #00a1ff;
   border-bottom: 2px solid #00a1ff;
 }
@@ -595,18 +595,19 @@ a:hover {
 --------------------------------------------------------------*/
 .sidebar {
   position: fixed;
-  top: 60px;
+  top: 0px;
   left: 0;
   bottom: 0;
   width: 300px;
   z-index: 996;
   transition: all 0.3s;
-  padding: 20px;
+  padding: 10px;
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: #aab7cf transparent;
-  box-shadow: 0px 0px 20px rgba(1, 41, 112, 0.1);
-  background-color: #fff;
+  /* box-shadow: 0px 0px 20px rgba(1, 41, 112, 0.1); */
+  /* border-right: 10px;
+  border-color: #d9dbe9; */
 }
 
 @media (max-width: 1199px) {
@@ -688,11 +689,11 @@ a:hover {
   align-items: center;
   font-size: 15px;
   font-weight: 600;
-  color: #00a1ff;
+  color: white !important;
   transition: 0.3;
-  background: #f6f9ff;
+  background: #e1b70b;
   padding: 10px 15px;
-  border-radius: 4px;
+  border-radius: 10px;
 }
 
 .sidebar-nav .nav-link i {
@@ -703,7 +704,7 @@ a:hover {
 .sidebar-nav .nav-link.nav-link.active i {
   font-size: 16px;
   margin-right: 10px;
-  color: #00a1ff;
+  color: white !important;
 }
 
 .sidebar-nav .nav-link.collapsed {
@@ -817,8 +818,8 @@ label {
 .modal-main {
   position: absolute;
   background: white;
-  width: 900px;
-  height: auto;
+  width: 90vw;
+  height: 90vh;
   overflow: scroll;
   top: 50%;
   border-radius: 10px !important;

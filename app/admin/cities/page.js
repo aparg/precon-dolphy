@@ -269,14 +269,16 @@ export default function Cities() {
       <div className="py-4 w-100 ">
         <div className="row row-cols-1 row-cols-md-5 d-flex align-items-center mx-0">
           <div className="col-md-8">
-            <h5 className="fw-bold mb-0">Cities</h5>
+            <div className="logo">
+              <span className="text-4xl">Cities</span>
+            </div>
           </div>
           <div className="col-md-4 d-flex justify-content-end">
             <button
-              className="btn btn-success py-3"
+              className="btn bg-[#262338] text-white py-3 hover:text-white font-medium"
               onClick={() => setModalCity(true)}
             >
-              Add New City
+              + Add New City
             </button>
           </div>
         </div>

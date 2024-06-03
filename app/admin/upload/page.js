@@ -382,11 +382,16 @@ export default function Upload() {
       )}
       <div className="bg-white">
         <div className="container-fluid px-minn">
-          <div className="d-flex justify-content-between pt-5">
-            <Link href="/admin/" className="btn bg-white shadow">
-              Go Back
+          <div className="d-flex justify-start pt-5 items-center">
+            <Link
+              href="/admin/"
+              className="visited:text-black text-black font-normal text-[5rem]"
+            >
+              <img src="/back.svg"></img>
             </Link>
-            <h4 className="fw-bold">Upload New Pre Construction</h4>
+            <span className="logo ml-3">
+              <span className="text-4xl">Add New Preconstruction</span>
+            </span>
           </div>
         </div>
         <div className="container-fluid px-minn py-5 mydetaill">
@@ -726,12 +731,18 @@ export default function Upload() {
           <div className="my-3"></div>
           <div className="mt-5"></div>
           <div className="pt-5"></div>
-          <div className="py-3 d-flex justify-content-center align-items-center d-block bg-white w-100 posss">
+          <div className="py-3 d-flex justify-end align-items-center d-block bg-white w-100 posss">
+            <Link
+              href="/admin"
+              className="text-black text-md font-bold mr-10 hover:text-black visited:text-black"
+            >
+              Cancel
+            </Link>
             <button
-              className="btn btn-success btn-lg shadow-lg"
+              className="btn bg-black text-white text-md font-bold px-10"
               onClick={(e) => handleSubmit(e)}
             >
-              Upload now
+              Add
             </button>
           </div>
         </div>

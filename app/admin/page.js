@@ -4,6 +4,7 @@ import Link from "next/link";
 import ListingTable from "@/components/ListingTable";
 import axios from "axios";
 import swal from "sweetalert";
+import PageSelector from "@/components/PageSelector";
 
 export default function Home() {
   const [filters, setFilters] = useState({
@@ -83,9 +84,64 @@ export default function Home() {
   }
 
   return (
-    <>
-      <div className="py-4 w-100 ">
-        <div className="row row-cols-1 row-cols-md-5 d-flex align-items-center mx-0">
+    <div className="border-l-[1px] border-[#D9DBE9] min-h-full">
+      <div className="w-full sticky">
+        <div className="flex justify-between items-center pb-1 border-b-[1px] border-[#D9DBE9] p-4">
+          <form
+            className="d-flex align-items-center bg-gray border-2 border-[#D9DBE9] px-4 rounded-md col-8 justify-start"
+            method="POST"
+            action="#"
+          >
+            <button type="submit" title="Search">
+              <i className="bi bi-search text-gray-500 mr-3"></i>
+            </button>
+            <input
+              type="text"
+              name="query"
+              placeholder="Search"
+              title="Enter search keyword"
+              className="focus-visible:outline-none w-10/12 py-[0.7rem]"
+            />
+          </form>
+          <img
+            src="/COA-agent-pic.jpg"
+            alt="profile-picture"
+            className="w-12 rounded-full mb-2"
+          />
+        </div>
+        <div className="flex justify-between items-center my-2 mt-4 p-4">
+          <Link href="/admin/" className="logo">
+            <span className="text-4xl">Preconstructions</span>
+          </Link>
+          <div className="flex">
+            {/* <div className="search-bar mx-2"> */}
+            <form
+              className="search-form d-flex align-items-center mx-3 bg-gray border-2 border-[#D9DBE9] px-4 rounded-md"
+              method="POST"
+              action="#"
+            >
+              <input
+                type="text"
+                name="query"
+                placeholder="Search"
+                title="Enter search keyword"
+                className="focus-visible:outline-none"
+              />
+              <button type="submit" title="Search">
+                <i className="bi bi-search text-gray-500"></i>
+              </button>
+            </form>
+            {/* </div> */}
+            <Link
+              href="/admin/upload/"
+              className="btn bg-[#262338] text-white py-3 hover:text-white font-medium"
+            >
+              + Add New Preconstruction
+            </Link>
+          </div>
+        </div>
+
+        <div className="row row-cols-1 row-cols-md-5 d-flex align-items-center mx-0 justify-start pl-2">
           <div className="col-md-3">
             <div className="form-floating">
               <select
@@ -136,44 +192,33 @@ export default function Home() {
               <label htmlFor="status">Select Status</label>
             </div>
           </div>
-          <div className="col-md-3 d-flex justify-content-end">
-            <Link
-              href="/admin/upload/"
-              className="btn bg-primary-color text-white py-3 hover:text-white font-medium"
+          <div className="col-md-2">
+            <button
+              className="border-1 p-[1rem] rounded-md border-[#dee2e6] font-bold text-gray-500"
+              onClick={() =>
+                setFilters({
+                  city: "All",
+                  status: "All",
+                  typee: "All",
+                })
+              }
             >
-              + Add New Preconstruction
-            </Link>
+              Clear Filters
+            </button>
           </div>
         </div>
       </div>
-      <div className="d-flex justify-content-between align-items-center">
-        <button
-          className="btn btn-lg btn-dark me-4"
-          onClick={() => setPage(page - 1)}
-          disabled={page === 1}
-        >
-          <i className="bi bi-arrow-left me-2"></i>
-          Previous Page
-        </button>
-        <span className="fw-bold">
-          Page {page} of {totalPages}
-        </span>
-        <button
-          className="btn btn-lg btn-dark"
-          onClick={() => setPage(page + 1)}
-          disabled={page === totalPages}
-        >
-          Next Page
-          <i className="bi bi-arrow-right ms-2"></i>
-        </button>
+
+      <div className="p-4">
+        <ListingTable
+          preconstructions={preconstructions}
+          handleDelete={handleDelete}
+          filters={filters}
+          setFilters={setFilters}
+          setPage={setPage}
+          totalPages={totalPages}
+        ></ListingTable>
       </div>
-      <div className="mt-4"></div>
-      <ListingTable
-        preconstructions={preconstructions}
-        handleDelete={handleDelete}
-        filters={filters}
-        setFilters={setFilters}
-      ></ListingTable>
-    </>
+    </div>
   );
 }
