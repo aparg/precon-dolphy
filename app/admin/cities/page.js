@@ -4,6 +4,7 @@ import CityTable from "@/components/CityTable";
 import axios from "axios";
 import swal from "sweetalert";
 import dynamic from "next/dynamic";
+import TopBar from "@/components/TopBar";
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 export default function Cities() {
@@ -266,6 +267,7 @@ export default function Cities() {
           </section>
         </div>
       )}
+      <TopBar />
       <div className="py-4 w-100 ">
         <div className="row row-cols-1 row-cols-md-5 d-flex align-items-center mx-0">
           <div className="col-md-8">

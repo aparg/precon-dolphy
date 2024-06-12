@@ -324,7 +324,7 @@ a:hover {
 }
 
 .nav-tabs-borde .nav-link.active {
-  background-color: #e1b70b;
+  background-color: #538392 !important;
   color: #00a1ff;
   border-bottom: 2px solid #00a1ff;
 }
@@ -660,7 +660,7 @@ a:hover {
 }
 
 .sidebar-nav .nav-item:hover {
-  background-color: #e1b70b;
+  background-color: #538392;
   border-radius: 10px;
 }
 
@@ -691,7 +691,7 @@ a:hover {
   font-weight: 600;
   color: white !important;
   transition: 0.3;
-  background: #e1b70b;
+  background: #538392 !important;
   padding: 10px 15px;
   border-radius: 10px;
 }
@@ -718,7 +718,7 @@ a:hover {
 
 .sidebar-nav .nav-link:hover {
   color: #00a1ff;
-  background: #e1b70b;
+  background: #dfdfdf;
 }
 
 .sidebar-nav .nav-link:hover i {

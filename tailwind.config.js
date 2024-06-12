@@ -12,7 +12,8 @@ const config = {
       },
       colors: {
         // "primary-color": "#ffc933",
-        "primary-color": "#E1B70B",
+        // "primary-color": "#E1B70B",
+        "primary-color": "#538392",
         "primary-grey": "#A0A3BD",
       },
     },

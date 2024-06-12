@@ -4,6 +4,7 @@ import DeveloperTable from "@/components/DeveloperTable";
 import axios from "axios";
 import swal from "sweetalert";
 import dynamic from "next/dynamic";
+import TopBar from "@/components/TopBar";
 
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
@@ -205,6 +206,7 @@ export default function Developers() {
 
   return (
     <>
+      <TopBar />
       {modaldeveloper && (
         <div className="modal">
           <section className="modal-main rounded-4">
@@ -385,8 +387,8 @@ export default function Developers() {
       )}
       <div className="py-4 w-100 ">
         <div className="row row-cols-1 row-cols-md-5 d-flex align-items-center mx-0">
-          <div className="col-md-8">
-            <h5 className="fw-bold mb-0">Developers</h5>
+          <div className="col-md-8 logo">
+            <span className="text-4xl">Developers</span>
           </div>
           <div className="col-md-4 d-flex justify-content-end">
             <button

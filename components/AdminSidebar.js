@@ -6,7 +6,7 @@ const AdminSidebar = () => {
   const pathname = usePathname();
 
   return (
-    <aside id="sidebar" className="sidebar">
+    <aside id="sidebar" className="sidebar border-r-[1px] border-[#D9DBE9]">
       <Link href={"/"}>
         <div className="flex justify-center h-15">
           <img src="/Logo.svg" className="w-20 py-5" />
@@ -15,9 +15,7 @@ const AdminSidebar = () => {
           <li className="nav-item sidebar-nav-link">
             <Link
               className={
-                pathname.endsWith("/admin")
-                  ? "nav-link active"
-                  : "nav-link hover:text-white"
+                pathname.endsWith("/admin") ? "nav-link active" : "nav-link"
               }
               href="/admin/"
             >
@@ -30,7 +28,7 @@ const AdminSidebar = () => {
               className={
                 pathname.startsWith("/admin/cities")
                   ? "nav-link active"
-                  : "nav-link  hover:text-white"
+                  : "nav-link "
               }
               href="/admin/cities"
             >
@@ -38,12 +36,12 @@ const AdminSidebar = () => {
               <span>Cities</span>
             </Link>
           </li>
-          <li className="nav-item sidebar-nav-link hover:text-white">
+          <li className="nav-item sidebar-nav-link">
             <Link
               className={
                 pathname.startsWith("/admin/developers")
                   ? "nav-link active"
-                  : "nav-link  hover:text-white"
+                  : "nav-link "
               }
               href="/admin/developers"
             >
@@ -56,7 +54,7 @@ const AdminSidebar = () => {
             className={
               pathname.startsWith("/admin/events")
                 ? "nav-link active"
-                : "nav-link  hover:text-white"
+                : "nav-link"
             }
             href="/admin/events"
           >
@@ -69,7 +67,7 @@ const AdminSidebar = () => {
               className={
                 pathname.startsWith("/admin/blog")
                   ? "nav-link active"
-                  : "nav-link  hover:text-white"
+                  : "nav-link"
               }
               href="/admin/blog"
             >

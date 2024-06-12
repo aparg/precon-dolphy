@@ -5,6 +5,7 @@ import ListingTable from "@/components/ListingTable";
 import axios from "axios";
 import swal from "sweetalert";
 import PageSelector from "@/components/PageSelector";
+import TopBar from "@/components/TopBar";
 
 export default function Home() {
   const [filters, setFilters] = useState({
@@ -37,7 +38,7 @@ export default function Home() {
     swal({
       title: "Are you sure?",
       text: "Once deleted, you will not be able to recover this listing!",
-      icon: "warning",
+      // icon: "warning",
       buttons: true,
       dangerMode: true,
     }).then((willDelete) => {
@@ -50,13 +51,13 @@ export default function Home() {
           buttons: false,
         });
       } else {
-        swal({
-          title: "Cancelled",
-          text: "Your listing is safe!",
-          icon: "error",
-          timer: 1000,
-          buttons: false,
-        });
+        // swal({
+        //   title: "Cancelled",
+        //   text: "Your listing is safe!",
+        //   icon: "error",
+        //   timer: 1000,
+        //   buttons: false,
+        // });
       }
     });
   };
@@ -87,31 +88,9 @@ export default function Home() {
   }
 
   return (
-    <div className="border-l-[1px] border-[#D9DBE9] min-h-full">
+    <>
       <div className="w-full sticky">
-        <div className="flex justify-between items-center pb-1 border-b-[1px] border-[#D9DBE9] p-4">
-          <form
-            className="d-flex align-items-center bg-gray border-2 border-[#D9DBE9] px-4 rounded-md col-8 justify-start"
-            method="POST"
-            action="#"
-          >
-            <button type="submit" title="Search">
-              <i className="bi bi-search text-gray-500 mr-3"></i>
-            </button>
-            <input
-              type="text"
-              name="query"
-              placeholder="Search"
-              title="Enter search keyword"
-              className="focus-visible:outline-none w-10/12 py-[0.7rem]"
-            />
-          </form>
-          <img
-            src="/COA-agent-pic.jpg"
-            alt="profile-picture"
-            className="w-12 rounded-full mb-2"
-          />
-        </div>
+        <TopBar />
         <div className="flex justify-between items-center my-2 mt-4 p-4">
           <Link href="/admin/" className="logo">
             <span className="text-4xl">Preconstructions</span>
@@ -225,6 +204,6 @@ export default function Home() {
           ></ListingTable>
         }
       </div>
-    </div>
+    </>
   );
 }

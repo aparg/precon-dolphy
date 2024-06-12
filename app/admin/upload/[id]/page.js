@@ -5,6 +5,7 @@ import dynamic from "next/dynamic";
 import swal from "sweetalert";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import LexicalTextEditor from "@/components/LexicalTextEditor";
 
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
@@ -297,6 +298,15 @@ export default function Update({ params }) {
         });
       }
     });
+  };
+  function onError(error) {
+    console.error(error);
+  }
+  const theme = {};
+  const initialConfig = {
+    namespace: "MyEditor",
+    theme,
+    onError,
   };
 
   return (
@@ -684,6 +694,18 @@ export default function Update({ params }) {
               }))
             }
           />
+          {/* <div className="h-20">
+            <LexicalComposer initialConfig={initialConfig}>
+              <RichTextPlugin
+                contentEditable={<ContentEditable />}
+                placeholder={<div>Enter some text...</div>}
+                ErrorBoundary={LexicalErrorBoundary}
+              />
+              <HistoryPlugin />
+              <AutoFocusPlugin />
+            </LexicalComposer>
+          </div> */}
+          <LexicalTextEditor />
           <div className="row row-cols-2 pt-4 pb-3">
             <div className="col-6 pb-3">
               <h5 className="fw-bold">Uploaded Images</h5>

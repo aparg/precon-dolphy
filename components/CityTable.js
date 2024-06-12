@@ -2,8 +2,8 @@ const CityTable = ({ cities, handleEdit, handleDelete }) => {
   return (
     <div className="container">
       <div className="border-grey-200 border-2 rounded-lg mb-2">
-        <table className="w-100 table-responsive text-black font-medium mb-0">
-          <thead className="text-white bg-[#F1F1F1]">
+        <table className="w-full table-responsive text-black font-medium mb-0">
+          <thead className="text-white bg-[#F1F1F1] w-100">
             <tr>
               <th
                 scope="col"

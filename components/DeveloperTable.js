@@ -56,7 +56,7 @@ const DeveloperTable = ({ developers, handleEdit, handleDelete }) => {
                   <td className="py-2 px-2">{developer.website_link}</td>
                   <td className="py-2 px-2 flex">
                     <button
-                      onClick={() => handleEdit(e, developer.id)}
+                      onClick={(e) => handleEdit(e, developer.id)}
                       className="flex flex-col mx-2 items-center"
                     >
                       <img src="/pen.svg" className="w-5 h-5" />
